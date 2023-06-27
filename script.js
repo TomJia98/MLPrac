@@ -1,12 +1,19 @@
-mainBox = document.getElementById("main_box");
-sendButton = document.getElementById("send");
-clearButton = document.getElementById("clear");
-trainButton = document.getElementById("train");
-width = 60;
-height = 60;
-iterator = 0;
-divArr = [];
+const mainBox = document.getElementById("main_box");
+const sendButton = document.getElementById("send");
+const clearButton = document.getElementById("clear");
+const trainButton = document.getElementById("train");
+// change these 2 values to change the size of the divs
+// ---------------------
+const width = 60;
+const height = 60;
+// ---------------------
+const iterator = 0;
+const divArr = [];
+
 let mouseDown = false; // This flag will track whether the mouse is currently pressed
+
+// TODO
+// refactor this to use mouse location to enable event listeners on nearby divs, should allow for expandable dot sizing, faster response and larger tiling
 
 // Listen for mousedown event on document to set the flag to true
 document.addEventListener("mousedown", function () {
@@ -18,13 +25,17 @@ document.addEventListener("mouseup", function () {
   mouseDown = false;
 });
 
+// creating the array of divs
 for (let i = 0; i < width; i++) {
+  // creating the lines
   const line = document.createElement("div");
   line.style.display = "inline-block";
   mainBox.appendChild(line);
   for (let i = 0; i < height; i++) {
+    // breaking the line up into squares
     const div = document.createElement("div");
     div.dataset.pos = iterator;
+    // default state is 0, meaning the div has not been clicked
     div.dataset.clicked = 0;
     div.classList.add("grid_square");
     line.appendChild(div);
@@ -58,7 +69,7 @@ const activateDiv = (e) => {
     //     e.dataset.isClicked = 0;
   }
 };
-
+// on hover, set the div to lightgrey
 const activateDivHover = (e) => {
   const isClicked = parseInt(e.dataset.clicked);
   if (isClicked == 0) {

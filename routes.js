@@ -7,15 +7,14 @@ const getValues = () => {
   }
   return posArr;
 };
+
 const sendData = async () => {
   data = getValues();
   console.log("sending off data");
   xhr = getXmlHttpRequestObject();
   xhr.onreadystatechange = dataCallback;
-  // asynchronous requests
   xhr.open("POST", "http://localhost:6969/data", true);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  // Send the request over the network
   xhr.send(JSON.stringift({ data: data }));
 };
 
