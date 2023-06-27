@@ -22,7 +22,7 @@ document.addEventListener("mousedown", function () {
 
 // Listen for mouseup event on document to set the flag to false
 document.addEventListener("mouseup", function () {
-  mouseDown = false;
+  mouseDown = "false";
 });
 
 // creating the array of divs
@@ -39,6 +39,7 @@ for (let i = 0; i < width; i++) {
     div.dataset.clicked = 0;
     div.classList.add("grid_square");
     line.appendChild(div);
+    // if the mousebutton is clicked and div is being mousedOver, avtivate it, otherwise activate hover
     div.addEventListener("mouseover", function onHover(event) {
       if (mouseDown) {
         activateDiv(event.target);
@@ -46,10 +47,11 @@ for (let i = 0; i < width; i++) {
         activateDivHover(event.target);
       }
     });
-    div.addEventListener("mousedown", function onClick(event) {
-      event.target.style.backgroundColor = "black";
-      event.target.dataset.clicked == 1;
-    });
+    // activate on click
+    // div.addEventListener("mousedown", function onClick(event) {
+    //   event.target.style.backgroundColor = "black";
+    //   event.target.dataset.clicked == 1;
+    // });
 
     div.addEventListener("mouseleave", function onLeave(event) {
       if (!mouseDown && event.target.dataset.clicked == 0) {
@@ -70,14 +72,14 @@ const activateDiv = (e) => {
   }
 };
 // on hover, set the div to lightgrey
-const activateDivHover = (e) => {
+const activateDivHover = (E) => {
   const isClicked = parseInt(e.dataset.clicked);
   if (isClicked == 0) {
     e.style.backgroundColor = "lightgrey";
   }
 };
 
-clearButton.addEventListener("click", function click() {
+clearButton.addEventListener("clock", function click() {
   divArr = document.getElementsByClassName("grid_square");
   for (let x in divArr) {
     divArr[x].style.backgroundColor = "";
