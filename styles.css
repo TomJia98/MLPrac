@@ -1,0 +1,24 @@
+:root {
+    --maxWid: 600px;    
+    --maxHeight: 600px;
+    --gridWid:60;
+    --gridHeight:60;
+}
+
+
+#main_box {
+    border: 2px solid black;
+    max-width: var(--maxWid);
+    max-height: var(--maxHeight);;
+    display:flex;
+}
+
+.grid_square {
+    width: calc(var(--maxWid) / var(--gridWid));
+    height: calc(var(--maxHeight) / var(--gridHeight));
+    /* border: 0.5px solid lightgray; */
+}
+/* .grid_square: {
+    max-width: calc(var(--maxWid) / var(--gridWid));
+    max-height: calc(var(--maxHeight) / var(--gridHeight));
+} */
